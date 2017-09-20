@@ -1,7 +1,13 @@
 var wins=0;
-var currentWord="";
 var numGuess=9;
 var guessesRemain=[];
+
+var selectedWord = [];
+var placeholder = ["_","_","l","l"];
+
+//check to see if letter exist with array selctedWord (push word from randomWordChoice function to selctedWord array and separate into letters, maybe the split
+//if it does then examine the indices of the letter occurance(s) and replace the '_' with letter on placeholder
+// assign the value of the placeholder to a variable and send it to html
 
 
 // computer selects word from word bank
@@ -10,28 +16,34 @@ function randomWordChoice(){
 
   var veganWordchoice = veganWordBank[Math.floor(Math.random() * veganWordBank.length)];
 
-  return veganWordchoice;
+    return veganWordchoice;
   };
 
-function textToHyphens(){
-  var food = randomWordChoice();
+    console.log(randomWordChoice());
   
-  var hypenArr=[];
+  function selectedWordToArray(){
+    var word = randomWordChoice();
 
-  for(var i = 0; i <food.length; i++){
-    hypenArr.push("-");
+    selectedWord= Array.from(word);
+    
+    return selectedWord;
   }
+    console.log(selectedWordToArray());
+    console.log(selectedWord);
 
-  return hypenArr;
+// function textToHyphens(){
+//   var food = randomWordChoice();
+  
+//   var hypenArr=[];
 
-  document.getElementByID("currentWord").innerHTML =textToHyphens();
-  };
+//   for(var i = 0; i <food.length; i++){
+//     hypenArr.push("-");
+//   }
+
+//   return hypenArr;
+
+//   document.getElementByID("currentWord").innerHTML =textToHyphens();
+//   };
 
 
-document.onkeyup= function(event){
-  userGuess= event.key;
-  };
 
-
-
-console.log(textToHyphens());
