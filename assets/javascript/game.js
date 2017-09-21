@@ -26,7 +26,7 @@ function randomWordChoice() {
     var word = randomWordChoice();
 
     toHyphens(word);
-
+// have arr in name 
     selectedWord= Array.from(word);
     
     return selectedWord;
@@ -50,33 +50,50 @@ function randomWordChoice() {
     }
   };
 
+function reset(){
+    numGuess=9;
+    guesses=[];
+    selectedWord = [];
+    placeholder = [];
+    selectedWordToArray();
+}
 
 // ******** MAIN SECTION**********
-
-selectedWordToArray();
+reset();
 console.log(selectedWord);
 
     // on each keystroke, check 1.) has this letter been guessed? If YES alert user. If NO push userGuess to array so that the user can see they guessed the letter. also if YES 
-  document.onkeyup=function(event){
+  document.onkeyup=function(event) {
     
     var userGuess= event.key
 
-    if (guesses.indexOf(userGuess) === -1){
+    if (guesses.indexOf(userGuess) === -1 && numGuess > 0) {
        guesses.push(userGuess);
        loopThroughWord(userGuess);
+       numGuess--;
 
          if(selectedWord.toString() === placeholder.toString()){
-          alert("You win");
+          alert("You win")
+          wins++;
+          reset();
         }
-    } 
+      }
+      else if( numGuess < 1) {
+        alert("game over");
+        reset();
+      }
+
     else {
       alert("already guessed that letter")
     }
+   
     
     console.log("guesses " + guesses);
     console.log("placeholder " + placeholder);
     console.log("selected word " + selectedWord);
     console.log(selectedWord.toString() === placeholder.toString())
+    console.log(numGuess);
+    console.log(wins);
   // add conditional logic for counting wins, losses, update number of guesses
   // create reset function
   // create function for updating DOM
