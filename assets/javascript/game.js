@@ -52,11 +52,11 @@ function randomWordChoice(){
 
 // use a for loop to iterate through eat letter, validate its not already been guessed and push to its position on the placeholder array.
 function loopThroughWord(letter){
-  for (var i = 0; i < selectedWord[i].length; i++){
+  for (var i = 0; i < selectedWord.length; i++){
     if(selectedWord[i] === letter ){
-      placeholder.push(letter);
-    };
-  };
+      placeholder.splice(i, 0, letter);
+    }
+  }
 };
 
 // Need to create a reset function
