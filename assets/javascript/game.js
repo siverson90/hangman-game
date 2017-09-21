@@ -13,7 +13,7 @@ var placeholder = [];
 
 // computer selects word from word bank
 function randomWordChoice() {
-  var veganWordBank= ["kale", "bean", "pear", "peanut"];
+  var veganWordBank= ["kale", "bean", "pear", "peanut", "hummmus"];
 
   var veganWordchoice = veganWordBank[Math.floor(Math.random() * veganWordBank.length)];
 
@@ -39,7 +39,6 @@ function randomWordChoice() {
     placeholder.push("-")
     }
 
-
   };
     // use a for loop to iterate through eat letter, validate its not already been guessed and push to its position on the placeholder array.
   function loopThroughWord(letter){
@@ -50,7 +49,6 @@ function randomWordChoice() {
       }
     }
   };
-
 
 
 // ******** MAIN SECTION**********
@@ -66,19 +64,27 @@ console.log(selectedWord);
     if (guesses.indexOf(userGuess) === -1){
        guesses.push(userGuess);
        loopThroughWord(userGuess);
+
+         if(selectedWord.toString() === placeholder.toString()){
+          alert("You win");
+        }
     } 
     else {
       alert("already guessed that letter")
     }
-    console.log("guesses" + guesses);
-    console.log("hypens" + placeholder);
-    console.log("selected word" + selectedWord);
+    
+    console.log("guesses " + guesses);
+    console.log("placeholder " + placeholder);
+    console.log("selected word " + selectedWord);
+    console.log(selectedWord.toString() === placeholder.toString())
+  // add conditional logic for counting wins, losses, update number of guesses
+  // create reset function
+  // create function for updating DOM
+
   };
 
-   
 
-// create a function to turn word into hyphens
-// Need to create a reset function
+
  
 
 
