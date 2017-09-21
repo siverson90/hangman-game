@@ -24,7 +24,7 @@ function randomWordChoice() {
   // Convert word into comma separated format & hyphens
   function selectedWordToArray(){
     var word = randomWordChoice();
-    // maybe use a join *********
+
     toHyphens(word);
 
     selectedWord= Array.from(word);
@@ -34,21 +34,24 @@ function randomWordChoice() {
   }
   
 
-    // use a for loop to iterate through eat letter, validate its not already been guessed and push to its position on the placeholder array.
-  function loopThroughWord(letter){
-    for (var i = 0; i < selectedWord.length; i++){
-      if(selectedWord[i] === letter ){
-        placeholder.splice(i, 0, letter);
-      }
-    }
-  };
-
  function toHyphens(wordToConvert) {
   for (var i= 0; i < wordToConvert.length; i++){
     placeholder.push("-")
     }
 
+
   };
+    // use a for loop to iterate through eat letter, validate its not already been guessed and push to its position on the placeholder array.
+  function loopThroughWord(letter){
+    for (var i = 0; i < selectedWord.length; i++){
+      if(selectedWord[i] === letter ){
+        // placeholder.splice(i, 0, letter);
+        placeholder[i] = letter;
+      }
+    }
+  };
+
+
 
 // ******** MAIN SECTION**********
 
