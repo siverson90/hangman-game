@@ -1,9 +1,9 @@
 var wins=0;
 var numGuess=9;
-var guessesRemain=[];
+var guesses=[];
 
 var selectedWord = [];
-var placeholder = ["_","_","l","l"];
+var placeholder = [];
 
 //check to see if letter exist with array selctedWord (push word from randomWordChoice function to selctedWord array and separate into letters, maybe the split
 //if it does then examine the indices of the letter occurance(s) and replace the '_' with letter on placeholder
@@ -19,8 +19,8 @@ function randomWordChoice(){
     return veganWordchoice;
   };
 
-    console.log(randomWordChoice());
   
+  // Convert word into comma separated format
   function selectedWordToArray(){
     var word = randomWordChoice();
 
@@ -31,19 +31,38 @@ function randomWordChoice(){
     console.log(selectedWordToArray());
     console.log(selectedWord);
 
-// function textToHyphens(){
-//   var food = randomWordChoice();
-  
-//   var hypenArr=[];
+    // on each keystroke, check 1.) has this letter been guessed? If YES alert user. If NO push userGuess to array so that the user can see they guessed the letter. also if YES 
+  document.onkeyup=function(event){
+    
+    var userGuess= event.key
 
-//   for(var i = 0; i <food.length; i++){
-//     hypenArr.push("-");
-//   }
+    if (guesses.indexOf(userGuess) === -1){
+       guesses.push(userGuess);
+       loopThroughWord(userGuess);
+    } 
+    else {
+      alert("already guessed that letter")
+    }
+    console.log(guesses);
+    console.log(placeholder);
+    console.log(selectedWord);
+  };
 
-//   return hypenArr;
+   
 
-//   document.getElementByID("currentWord").innerHTML =textToHyphens();
-//   };
+// use a for loop to iterate through eat letter, validate its not already been guessed and push to its position on the placeholder array.
+function loopThroughWord(letter){
+  for (var i = 0; i < selectedWord[i].length; i++){
+    if(selectedWord[i] === letter ){
+      placeholder.push(letter);
+    };
+  };
+};
+
+// Need to create a reset function
+
+
+
 
 
 
