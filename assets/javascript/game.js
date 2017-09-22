@@ -50,13 +50,36 @@ function randomWordChoice() {
     }
   };
 
+function render(){
+  document.getElementById("numberOfGuesses").innerHTML = numGuess;
+  document.getElementById("guessBank").innerHTML = guesses;
+  document.getElementById("fillInBlanks").innerHTML = placeholder;
+
+}
+
 function reset(){
     numGuess=9;
     guesses=[];
     selectedWord = [];
     placeholder = [];
     selectedWordToArray();
+    confirm("Press spacebar to play");
 }
+
+// LOOK up function syntax********
+function win(){
+  document.getElementById("wins").innerHTML = wins;
+
+  reset();
+}
+
+// function loose(){
+//   prompt("You loose");
+// }
+
+// function decreaseNumGuess(){
+//   numGuess
+// }
 
 // ******** MAIN SECTION**********
 reset();
@@ -71,10 +94,12 @@ console.log(selectedWord);
        guesses.push(userGuess);
        loopThroughWord(userGuess);
        numGuess--;
+       render();
 
          if(selectedWord.toString() === placeholder.toString()){
-          alert("You win")
+          alert("You win");
           wins++;
+          win();
           reset();
         }
       }

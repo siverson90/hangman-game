@@ -3,6 +3,7 @@
 <head>
   <title>Hangman</title>
   <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
@@ -10,15 +11,14 @@
 
 <h2>Press any key to get started</h2>
 
-<p>Wins <span>0</span></p>
+<p>Wins<span id="wins"> 0</span></p>
 
-<p>Current word</p>
+<p>Current word<span id="fillInBlanks"></span></p>
 
-<p><span id="currentWord"></span></p>
 
-<p>Number of guessess <span>0</span></p>
+<p>Number of guesses <span id="numberOfGuesses"> 0</span></p>
 
-<p>Letters already guessed <span>Array</span></p>
+<p>Letters already guessed <span id="guessBank">blank</span></p>
 
 <script src="assets/javascript/game.js"></script>
 </body>
