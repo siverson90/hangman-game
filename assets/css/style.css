@@ -1,0 +1,9 @@
+body {
+  font-size: 25px;
+}
+
+h1{
+  font-size: 28px;
+  font-weight: bold;
+  border: 1px solid black;
+}

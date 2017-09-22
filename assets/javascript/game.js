@@ -63,7 +63,6 @@ function reset(){
     selectedWord = [];
     placeholder = [];
     selectedWordToArray();
-    confirm("Press spacebar to play");
 }
 
 // LOOK up function syntax********
@@ -72,14 +71,6 @@ function win(){
 
   reset();
 }
-
-// function loose(){
-//   prompt("You loose");
-// }
-
-// function decreaseNumGuess(){
-//   numGuess
-// }
 
 // ******** MAIN SECTION**********
 reset();
@@ -90,7 +81,7 @@ console.log(selectedWord);
     
     var userGuess= event.key
 
-    if (guesses.indexOf(userGuess) === -1 && numGuess > 0) {
+    if (guesses.indexOf(userGuess) === -1 && numGuess > 1) {
        guesses.push(userGuess);
        loopThroughWord(userGuess);
        numGuess--;
@@ -103,27 +94,37 @@ console.log(selectedWord);
           reset();
         }
       }
-      else if( numGuess < 1) {
-        alert("game over");
-        reset();
+      else if(guesses.indexOf(userGuess) === -1 && selectedWord.toString() === placeholder.toString()) {
+          alert("You win");
+          wins++;
+          win();
+          reset();
       }
+      
+      else if(guesses.indexOf(userGuess) === -1 && selectedWord.toString() !== placeholder.toString()) {
+          alert("you lost");
+          render();
+          reset();
+        }
 
     else {
       alert("already guessed that letter")
     }
-   
-    
+
     console.log("guesses " + guesses);
     console.log("placeholder " + placeholder);
     console.log("selected word " + selectedWord);
     console.log(selectedWord.toString() === placeholder.toString())
     console.log(numGuess);
     console.log(wins);
+  };
+   
+    
+   
   // add conditional logic for counting wins, losses, update number of guesses
   // create reset function
   // create function for updating DOM
 
-  };
 
 
 
